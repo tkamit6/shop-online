@@ -11,9 +11,9 @@ import Image from 'next/image';
 
 export default function Header() {
     const { data: session } = useSession()
-    console.log(session, "session")
+    // console.log(session, "session")
     return (
-        <div className='bg-bodyColor h-20'>
+        <div className='bg-bodyColor h-20  top-0  sticky z-50'>
             <Container className={"h-full transition-all duration-500 flex items-center md:gap-x-5 justify-between md:justify-start"} >
                 <Link href='#' className='text-3xl font-semibld hover:text-orange-500 transition-all'>Logo</Link>
                 <div className='w-full hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 py-1.5 focus-within:border-orange-500 bg-transparent group'>
@@ -22,7 +22,7 @@ export default function Header() {
                 </div>
 
                 <div className='flex gap-x-2'>
- 
+
                     {/* login */}
                     {
                         !session && <div onClick={() => signIn()} className='headerDiv gap-x-1 cursor-pointer'>

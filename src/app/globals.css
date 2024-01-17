@@ -16,8 +16,31 @@
   }
 }
 
-@layer components{
-  .headerDiv{
+@layer components {
+  .headerDiv {
     @apply bg-bgLight text-gray-500 items-center justify-center flex px-3 p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500 duration-200
   }
+}
+
+.slick-initialized {
+  position: relative;
+}
+
+.slick-initialized button.slick-arrow {
+  border: 2px solid red;
+  position: absolute;
+  /* left: 50%; */
+  gap: 2rem;
+  transform: translate(-50%, -50%);
+}
+
+.slick-initialized button.slick-arrow.slick-prev {
+  left: 5%;
+  border: 2px solid red;
+  z-index: 1;
+}
+.slick-initialized button.slick-arrow.slick-next {
+  right: 5%;
+  border: 2px solid red;
+  z-index: 1;
 }

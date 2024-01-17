@@ -5,7 +5,6 @@ import bannerThree from "@/images/bannerthree.jpg"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import { PiCaretLeftLight, PiCaretRightLight } from "react-icons/pi"
 import Image from "next/image";
 import BannrText from "./BannrText";
@@ -29,7 +28,7 @@ const PreArrow = (props) => {
 
 export default function Banner() {
     var settings = {
-        dots: true,
+        dots: fals,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -42,7 +41,7 @@ export default function Banner() {
 
 
     return (
-        <div className="relative">
+        <div className="relative sm:pb-8">
             <Slider {...settings}>
                 <div className="w-full relative">
                     <Image src={bannerOne} alt="banner" className="w-full h-full relative" />

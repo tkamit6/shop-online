@@ -9,7 +9,7 @@ const nextConfig = {
                 hostname: 'images.pexels.com'
             },
             {
-                hostname: 'images.freepik.com'
+                hostname: 'img.freepik.com'
             }
         ]
     }
