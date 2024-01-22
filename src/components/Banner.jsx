@@ -28,7 +28,7 @@ const PreArrow = (props) => {
 
 export default function Banner() {
     var settings = {
-        dots: fals,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,

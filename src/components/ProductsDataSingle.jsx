@@ -6,7 +6,7 @@ import FormatedAmount from './FormatedAmount'
 import { IoIosStar } from "react-icons/io";
 import Link from 'next/link';
 
-export default function ProductsData({ item }) {
+export default function ProductsDataSingle({ item }) {
     const starArray = Array.from({ length: item?.rating }, (_, index) => (
         <span key={index} className='text-yellow-500'>
             <IoIosStar />

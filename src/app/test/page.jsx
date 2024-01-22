@@ -56,8 +56,7 @@ export default function test() {
           />
         )}
       />
-      jj
-
+     
       {
         data && data.map((da) => (
           <p>{da?.companyName}</p>

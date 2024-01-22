@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function FormatedAmount({ amount }) {
+export default function FormatedAmount({ amount, className }) {
     const formatedAmount = new Number(amount).toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 2
     })
-    return <div>{formatedAmount}</div>
+    return <div className={className}>{formatedAmount}</div>
 }
