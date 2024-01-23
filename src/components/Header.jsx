@@ -8,13 +8,27 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { FiLogOut } from 'react-icons/fi'
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormatedAmount from './FormatedAmount';
+import { addUser, deleteUser } from '@/redux/shoppingSlice';
 
 export default function Header() {
     const [totalAmt, setTotalAmt] = useState(0)
     const { data: session } = useSession()
     const { productData } = useSelector((state) => state.shopping)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (session) {
+            dispatch(addUser({
+                name: session?.user?.name,
+                email: session?.user?.email,
+                image: session?.user?.image
+            }))
+        } else {
+            dispatch(deleteUser())
+        }
+    }, [session])
 
     useEffect(() => {
         let amt = 0;
