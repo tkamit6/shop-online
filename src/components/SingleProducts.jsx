@@ -1,11 +1,15 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
 import FormatedAmount from './FormatedAmount'
 import { IoMdCart } from 'react-icons/io'
 import { MdFavoriteBorder } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { addtoCart } from '@/redux/shoppingSlice'
+import toast from 'react-hot-toast'
 
 export default function SingleProducts({ product }) {
-    console.log(product)
+    const dispatch = useDispatch();
     return (
         <div className='grid lg:grid-cols-2 gap-5 bg-white p-4 rounded-lg'>
             <div className='w-full h-full overflow-hidden'>
@@ -28,7 +32,7 @@ export default function SingleProducts({ product }) {
                     </span>
                 </div>
 
-                <button className='bg-darkText text-slate-100 px-6 py-2 uppercase text-sm w-fit flex items-center gap-x-2 '>add to cart <IoMdCart /> </button>
+                <button onClick={() => dispatch(addtoCart(product)) && toast.success(`${product?.title.substring(0, 10)} added to cart`)} className='bg-darkText text-slate-100 px-6 py-2 uppercase text-sm w-fit flex items-center gap-x-2 '>add to cart <IoMdCart /> </button>
                 <p className='flex items-center gap-x-2 cursor-pointer'><MdFavoriteBorder className='text-xl' /> add to wishlist</p>
             </div>
         </div>

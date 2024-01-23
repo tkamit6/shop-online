@@ -37,7 +37,8 @@ export const shoppingSlice = createSlice({
             }
         },
         deleteProduct: (state, action) => {
-            state.productData = state.productData.filter((item) => item.id != action.payload)
+            state.productData = state.productData.filter(item => item.id !== action.payload);
+            console.log("delete");
         },
         resetCart: (state) => {
             state.productData = [];
