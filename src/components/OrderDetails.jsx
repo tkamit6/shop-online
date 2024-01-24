@@ -46,7 +46,7 @@ export default function OrderDetails() {
                         <div className='col-span-1 flex justify-center'>
                             <FormatedAmount amount={item?.price} />
                         </div>
-                        <div className='col-span-1 flex justify-center b'>
+                        <div className='col-span-1 flex justify-center '>
                             <FormatedAmount className={'font-semibold'} amount={item?.quantity * item?.price} />
                         </div>
                     </div>
