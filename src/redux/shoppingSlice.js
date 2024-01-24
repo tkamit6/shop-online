@@ -30,8 +30,8 @@ export const shoppingSlice = createSlice({
             const existingProduct = state.productData.find((item) => {
                 return item._id === action.payload._id
             })
-            if (existingProduct.quantity === 1) {
-                existingProduct.quantity = 1
+            if (existingProduct.quantity === 0) {
+                existingProduct.quantity = 0
             } else {
                 existingProduct && existingProduct.quantity--;
             }
@@ -48,9 +48,15 @@ export const shoppingSlice = createSlice({
         },
         deleteUser: (state) => {
             state.userInfo = null;
+        },
+        saveOrder: (state, action) => {
+            state.orderData = action.payload;
+        },
+        resetOrder: (state) => {
+            state.orderData = []
         }
     }
 });
 
-export const { addtoCart, increaseQuantity, decreaseQuantity, resetCart, deleteProduct, addUser, deleteUser } = shoppingSlice.actions;
+export const { addtoCart, increaseQuantity, decreaseQuantity, resetCart, deleteProduct, addUser, deleteUser, saveOrder, resetOrder } = shoppingSlice.actions;
 export default shoppingSlice.reducer;

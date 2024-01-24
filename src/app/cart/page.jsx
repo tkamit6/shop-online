@@ -25,7 +25,7 @@ export default function page() {
                 <div className='flex flex-col gap-y-2'>
                     {
                         productData.length > 0 ? productData.map((item) => (
-                            <><div key={item?._id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
+                            <div key={item?._id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
                                 <div className='flex items-center gap-x-2'>
                                     <span onClick={() => dispatch(deleteProduct(item))} className='cursor-pointer'><AiOutlineClose /></span>
                                     <Image src={item?.image} alt='img' width={500} height={500} className='object-cover w-20 h-20' />
@@ -39,7 +39,7 @@ export default function page() {
                                     {<FormatedAmount amount={item?.price * item?.quantity} />}
                                 </div>
                             </div>
-                            </>
+
                         )) : "empty"
                     }
                     {
