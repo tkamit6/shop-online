@@ -78,7 +78,7 @@ export default function Header() {
     return (
         <div className='bg-bodyColor h-20  top-0  sticky z-50'>
             <Container className={"h-full transition-all duration-500 flex items-center md:gap-x-5 justify-between md:justify-start"} >
-                <Link href='/' className='text-3xl font-semibld hover:text-blue-500 transition-all'>Logo</Link>
+                <Link href='/' className='text-3xl font-semibld hover:text-blue-500 transition-all'>E-Mart</Link>
                 <div className='w-full md:flex-1 hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 focus-within:border-blue-500 bg-transparent group'>
                     <CiSearch className='text-gray-500 group-focus-within:text-gray-800 duration-200' />
                     <Autocomplete
