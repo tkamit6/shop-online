@@ -52,7 +52,7 @@ export default function ProductsData({ item }) {
                         <div className='flex'>{starArray}  </div>
                     </div>
                 </div>
-                <Toaster />
+                <Toaster  />
             </div>
         </>
     )
