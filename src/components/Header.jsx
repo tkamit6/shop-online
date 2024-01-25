@@ -88,7 +88,7 @@ export default function Header() {
                         options={serachResult.map((item) => item?.title)}
                         sx={{ border: "none" }}
                         onChange={handlerSearchSelected}
-                        renderInput={(params) => <TextField onChange={handlerSearchQuery} className='!border-none' {...params} placeholder='Search Products' />}
+                        renderInput={(params) => <TextField sx={{border: "none", borderWidth:0}} style={{borderWidth: 0}} onChange={handlerSearchQuery} className='!border-none' {...params} placeholder='Search Products' />}
                     />
                     {/* <input value={searchQuery} onChange={handlerSearchQuery} placeholder='Search Products' type='text' className='placeholder:text-sm bg-transparent flex-1 outline-none' /> */}
                 </div>
