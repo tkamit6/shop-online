@@ -17,6 +17,21 @@ export const getTrendingProducts = async () => {
     return res.json()
 }
 
+export const searchQueryFunc = async (req, res) => {
+    try {
+        const allProducts = await getProducts();
+
+        const filteredProducts = await allProducts.filter((product) => {
+            return product.title.toLowerCase().includes(req.toLowerCase())
+
+        })
+        return filteredProducts;
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 export const calculatePercentage = (oldPrice, price) => {
     return !!parseFloat(price) && !!parseFloat(oldPrice) ? (100 - (oldPrice / price) * 100).toFixed(0) : 0;
 }

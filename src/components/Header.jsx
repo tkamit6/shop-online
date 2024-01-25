@@ -6,17 +6,54 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react"
-import { FiLogOut } from 'react-icons/fi'
-import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import FormatedAmount from './FormatedAmount';
 import { addUser, deleteUser } from '@/redux/shoppingSlice';
+// import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@nextui-org/react";
+import { searchQueryFunc } from '@/helpers';
+import { Autocomplete, TextField } from '@mui/material';
+import { useRouter } from 'next/navigation';
+
 
 export default function Header() {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [serachResult, setSearcResult] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
     const [totalAmt, setTotalAmt] = useState(0)
     const { data: session } = useSession()
     const { productData, orderData } = useSelector((state) => state.shopping)
     const dispatch = useDispatch();
+    const dropDownMenu = ['Logout'];
+    const [anchorElUser, setAnchorElUser] = useState(null)
+    const router = useRouter();
+    const imageUrl = session ? session?.user?.image : "https://i.pravatar.cc/150?u=a042581f4e29026704d";
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+
+    const handlerSearchQuery = async (e, value) => {
+        setSearchQuery(e.target.value)
+
+        const data = await searchQueryFunc(searchQuery);
+        setSearcResult(data)
+    }
+    console.log(serachResult, selectedItem)
+
+    const handlerSearchSelected = (e, value) => {
+        const selectedItem = serachResult.find((item) => {
+            if (item?.title === value) {
+                router.push(`/product?_id=${item?._id}`)
+            }
+        })
+        console.log(selectedItem)
+    }
 
     useEffect(() => {
         if (session) {
@@ -43,12 +80,21 @@ export default function Header() {
         <div className='bg-bodyColor h-20  top-0  sticky z-50'>
             <Container className={"h-full transition-all duration-500 flex items-center md:gap-x-5 justify-between md:justify-start"} >
                 <Link href='/' className='text-3xl font-semibld hover:text-orange-500 transition-all'>Logo</Link>
-                <div className='w-full md:flex-1 hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 py-1.5 focus-within:border-orange-500 bg-transparent group'>
+                <div className='w-full md:flex-1 hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 focus-within:border-orange-500 bg-transparent group'>
                     <CiSearch className='text-gray-500 group-focus-within:text-gray-800 duration-200' />
-                    <input placeholder='Search Products' type='text' className='placeholder:text-sm bg-transparent flex-1 outline-none' />
+                    <Autocomplete
+                        disablePortal
+                        className='bg-transparent border-none flex-1 outline-none'
+                        id="combo-box-demo"
+                        options={serachResult.map((item) => item?.title)}
+                        sx={{ border: "none" }}
+                        onChange={handlerSearchSelected}
+                        renderInput={(params) => <TextField onChange={handlerSearchQuery} className='!border-none' {...params} placeholder='Search Products' />}
+                    />
+                    {/* <input value={searchQuery} onChange={handlerSearchQuery} placeholder='Search Products' type='text' className='placeholder:text-sm bg-transparent flex-1 outline-none' /> */}
                 </div>
 
-                <div className='flex gap-x-2'>
+                <div className='flex gap-x-2 items-center'>
 
                     {/* login */}
                     {
@@ -67,18 +113,41 @@ export default function Header() {
                             <span className=' bg-white text-orange-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 p-1 flex items-center justify-center shadow-xl shadow-black'>{productData ? productData.length : 0}</span>
                         </div>
                     </Link>
+                    {
+                        session && <Dropdown placement="bottom-start">
+                            <DropdownTrigger>
+                                <User
+                                    as="button"
+                                    avatarProps={{
+                                        isBordered: true,
+                                        src: imageUrl,
+                                    }}
+                                    className="transition-transform"
+                                    description={`${session?.user?.email}`}
+                                    name={session?.user?.name}
+                                />
 
-                    {/* user image */}
-                    {
-                        session?.user?.image && <Image src={session?.user?.image} width={40} height={40} className='rounded-full' />
+                            </DropdownTrigger>
+                            <DropdownMenu aria-label="User Actions" variant="flat">
+                                <DropdownItem key="profile" className="h-14 gap-2">
+                                    <p className="font-bold">Signed in as</p>
+                                    <p className="font-bold">@{session?.user?.email}</p>
+                                </DropdownItem>
+                                <DropdownItem key="profile">
+                                    Profile
+                                </DropdownItem>
+
+                                {
+                                    dropDownMenu.map((item) => (
+                                        <DropdownItem key={item} onClick={() => signOut()} color="danger">
+                                            {item}
+                                        </DropdownItem>
+                                    ))
+                                }
+                            </DropdownMenu>
+                        </Dropdown>
                     }
-                    {/* logout btn */}
-                    {
-                        session && <div onClick={() => signOut()} className='flex items-center cursor-pointer gap-x-1'>
-                            <FiLogOut className='text-xl' />
-                            <p className='text-sm font-semibold'>Logout</p>
-                        </div>
-                    }
+
                 </div>
 
             </Container>
