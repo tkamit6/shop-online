@@ -26,7 +26,7 @@ export default function ProductsData({ item }) {
                     <div className='w-full h-80 group relative overflow-hidden'>
                         <Image src={item?.image} alt='img' height={500} width={500} className='w-full h-full object-cover group-hover:scale-110 duration-200 rounded-t-lg' />
                         {
-                            item?.isNew && <span className='bg-white rounded-full px-4 py-1 absolute top-2 right-2 group-hover:bg-orange-400 group-hover:text-white font-medium text-sm duration-200'>New Arrival</span>
+                            item?.isNew && <span className='bg-white rounded-full px-4 py-1 absolute top-2 right-2 group-hover:bg-blue-400 group-hover:text-white font-medium text-sm duration-200'>New Arrival</span>
                         }
                     </div>
                 </Link>
@@ -34,7 +34,7 @@ export default function ProductsData({ item }) {
                     <p className='font-medium'>{item?.title}</p>
                     <div className=' flex justify-between'>
                         <div>
-                            <p className='border-[1px] rounded-full px-3 py-0 bg-orange-400 text-white '>{calculatePercentage(item?.price, item?.oldPrice)}% off</p>
+                            <p className='border-[1px] rounded-full px-3 py-0 bg-blue-400 text-white '>{calculatePercentage(item?.oldPrice, item?.price)}% off</p>
                         </div>
 
                         <div className='flex gap-1 items-center'>
@@ -47,7 +47,7 @@ export default function ProductsData({ item }) {
                         </div>
                     </div>
                     <div className='flex items-center justify-between'>
-                        <button onClick={() => dispatch(addtoCart(item)) && toast.success(`${item?.title.substring(0, 10)} added to cart`)} className='bg-orange px-4 py-2 text-sm tracking-wide rounded-full text-slate-100 bg-orange-400 hover:bg-orange-800 hover:text-white duration-200'>Add to cart</button>
+                        <button onClick={() => dispatch(addtoCart(item)) && toast.success(`${item?.title.substring(0, 10)} added to cart`)} className='bg-blue px-4 py-2 text-sm tracking-wide rounded-full text-slate-100 bg-blue-400 hover:bg-blue-800 hover:text-white duration-200'>Add to cart</button>
 
                         <div className='flex'>{starArray}  </div>
                     </div>

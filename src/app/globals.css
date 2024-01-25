@@ -18,12 +18,12 @@
 
 @layer components {
   .headerDiv {
-    @apply bg-bgLight text-gray-500 items-center justify-center flex px-3 p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500 duration-200
+    @apply bg-bgLight text-gray-500 items-center justify-center flex px-3 p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-blue-500 duration-200
   }
 }
 
-.social-links{
-  @apply bg-slate-100 text-darkText p-1 inline-flex items-center justify-center rounded-md text-lg hover:bg-orange-400 duration-200 cursor-pointer
+.social-links {
+  @apply bg-slate-100 text-darkText p-1 inline-flex items-center justify-center rounded-md text-lg hover:bg-blue-400 duration-200 cursor-pointer
 }
 
 .slick-initialized {
@@ -41,10 +41,17 @@
   left: 5%;
   z-index: 1;
 }
+
 .slick-initialized button.slick-arrow.slick-next {
   right: 5%;
   z-index: 1;
 }
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-width: 0 !important;
+}
+
+.css-pm62lu-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

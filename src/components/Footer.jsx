@@ -37,8 +37,8 @@ export default function Footer() {
             {
               data && data?.footer?.div1?.main.map((li, id) => (
                 <li key={id}>
-                  <span className='text-slate-100 hover:text-orange-600 duration-200 block'>{li?.para}</span>
-                  <span className='text-orange-600'>{li?.date}</span>
+                  <span className='text-slate-100  duration-200 block'>{li?.para}</span>
+                  <span className='text-blue-300'>{li?.date}</span>
                 </li>
               ))
             }

@@ -4,6 +4,7 @@ import FormatedAmount from '@/components/FormatedAmount'
 import PaymentForm from '@/components/PaymentForm'
 import { decreaseQuantity, deleteProduct, increaseQuantity, resetCart } from '@/redux/shoppingSlice'
 import Image from 'next/image'
+import Link from 'next/link'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function page() {
     const dispatch = useDispatch()
     const { productData } = useSelector((state) => state.shopping)
-
 
     return (
         <div>
@@ -28,7 +28,9 @@ export default function page() {
                             <div key={item?._id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
                                 <div className='flex items-center gap-x-2'>
                                     <span onClick={() => dispatch(deleteProduct(item))} className='cursor-pointer'><AiOutlineClose /></span>
-                                    <Image src={item?.image} alt='img' width={500} height={500} className='object-cover w-20 h-20' />
+                                    <Link href={{ pathname: 'product', query: { _id: item?._id } }} >
+                                        <Image src={item?.image} alt='img' width={500} height={500} className='object-cover w-20 h-20' />
+                                    </Link>
                                 </div>
                                 <div className='flex items-center justify-center gap-x-3 border-[1px]'>
                                     <span onClick={() => dispatch(decreaseQuantity(item))} className='cursor-pointer'><FiChevronLeft /></span>

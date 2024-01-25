@@ -44,7 +44,6 @@ export default function Header() {
         const data = await searchQueryFunc(searchQuery);
         setSearcResult(data)
     }
-    console.log(serachResult, selectedItem)
 
     const handlerSearchSelected = (e, value) => {
         const selectedItem = serachResult.find((item) => {
@@ -79,8 +78,8 @@ export default function Header() {
     return (
         <div className='bg-bodyColor h-20  top-0  sticky z-50'>
             <Container className={"h-full transition-all duration-500 flex items-center md:gap-x-5 justify-between md:justify-start"} >
-                <Link href='/' className='text-3xl font-semibld hover:text-orange-500 transition-all'>Logo</Link>
-                <div className='w-full md:flex-1 hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 focus-within:border-orange-500 bg-transparent group'>
+                <Link href='/' className='text-3xl font-semibld hover:text-blue-500 transition-all'>Logo</Link>
+                <div className='w-full md:flex-1 hidden items-center md:flex gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 focus-within:border-blue-500 bg-transparent group'>
                     <CiSearch className='text-gray-500 group-focus-within:text-gray-800 duration-200' />
                     <Autocomplete
                         disablePortal
@@ -104,13 +103,13 @@ export default function Header() {
                         </div>
                     }
                     <Link href={`${totalAmt != 0 ? '/cart' : ''}`}>
-                        <div className='bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-600 duration-200 relative cursor-pointer'>
+                        <div className='bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-blue-600 duration-200 relative cursor-pointer'>
                             <MdOutlineShoppingCart className='text-xl' />
                             {
                                 productData ?
                                     <FormatedAmount className={"text-sm font-semibold"} amount={totalAmt} /> : 0
                             }
-                            <span className=' bg-white text-orange-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 p-1 flex items-center justify-center shadow-xl shadow-black'>{productData ? productData.length : 0}</span>
+                            <span className=' bg-white text-blue-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 p-1 flex items-center justify-center shadow-xl shadow-black'>{productData ? productData.length : 0}</span>
                         </div>
                     </Link>
                     {

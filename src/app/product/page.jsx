@@ -5,6 +5,7 @@ import { getSingleProduct, getTrendingProducts } from '@/helpers'
 
 export default async function page({ searchParams }) {
 
+    console.log(searchParams)
     const _idString = searchParams?._id
     const _id = Number(_idString)
     const product = getSingleProduct(_id)
@@ -15,7 +16,7 @@ export default async function page({ searchParams }) {
     return (
         <div>
             <Container>
-                <SingleProducts product={product} />
+                <SingleProducts product={product} idString={_idString} />
                 <div>
                     <p className='text-xl py-1 font-semibold'>Trending Products</p>
                     <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>

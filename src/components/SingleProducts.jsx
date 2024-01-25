@@ -1,15 +1,28 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import FormatedAmount from './FormatedAmount'
 import { IoMdCart } from 'react-icons/io'
 import { MdFavoriteBorder } from 'react-icons/md'
-import { useDispatch } from 'react-redux'
-import { addtoCart } from '@/redux/shoppingSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addtoCart, decreaseQuantity, increaseQuantity } from '@/redux/shoppingSlice'
 import toast from 'react-hot-toast'
 
-export default function SingleProducts({ product }) {
+export default function SingleProducts({ product, idString }) {
+    const [productQuantity, setProductQuantity] = useState(0)
     const dispatch = useDispatch();
+    const { productData } = useSelector((state) => state?.shopping);
+
+    console.log(productData)
+    useEffect(() => {
+        const singleProduct = productData.filter((item) => {
+            return item?._id == idString
+        })
+        setProductQuantity(singleProduct[0]?.quantity)
+    }, [productData])
+
+    console.log(productQuantity)
+
     return (
         <div className='grid lg:grid-cols-2 gap-5 bg-white p-4 rounded-lg'>
             <div className='w-full h-full overflow-hidden'>
@@ -32,8 +45,12 @@ export default function SingleProducts({ product }) {
                     </span>
                 </div>
 
-                <button onClick={() => dispatch(addtoCart(product)) && toast.success(`${product?.title.substring(0, 10)} added to cart`)} className='bg-darkText text-slate-100 px-6 py-2 uppercase text-sm w-fit flex items-center gap-x-2 '>add to cart <IoMdCart /> </button>
-                <p className='flex items-center gap-x-2 cursor-pointer'><MdFavoriteBorder className='text-xl' /> add to wishlist</p>
+                <button onClick={() => dispatch(addtoCart(product)) && toast.success(`${product?.title.substring(0, 10)} added to cart`)} className='bg-darkText hover:shadow-xl group text-slate-100 px-6 py-2 uppercase text-sm w-fit flex items-center gap-x-2 '>add to cart <IoMdCart className='group-hover:scale-125' /> </button>
+                {
+                    productQuantity > 0 && <div className='flex justify-center  '> <button onClick={() => dispatch(decreaseQuantity(product))}>less</button><p className='font-bold'> {productQuantity} </p><button onClick={() => dispatch(increaseQuantity(product))}>more</button> </div>
+                }
+
+                <p className='flex items-center gap-x-2 cursor-pointer'><MdFavoriteBorder className='text-xl ' /> add to wishlist</p>
             </div>
         </div>
     )

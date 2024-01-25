@@ -33,7 +33,7 @@ export const searchQueryFunc = async (req, res) => {
 }
 
 export const calculatePercentage = (oldPrice, price) => {
-    return !!parseFloat(price) && !!parseFloat(oldPrice) ? (100 - (oldPrice / price) * 100).toFixed(0) : 0;
+    return !!parseFloat(price) && !!parseFloat(oldPrice) ? ((oldPrice - price) / oldPrice * 100).toFixed(0) : 0;
 }
 
 export const getSingleProduct = (_id) => {
