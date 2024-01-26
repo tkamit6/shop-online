@@ -42,7 +42,7 @@ export const getSingleProduct = async (_id, category) => {
     console.log(category);
     try {
         if (category === 'electronics') {
-            const response = await axios.get('http://localhost:3000/api/db');
+            const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/db`);
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }
@@ -69,7 +69,7 @@ export const getSingleProduct = async (_id, category) => {
 
 export const phoneProducts = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/db');
+        const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/db`);
         if (!response.status === 200) {
             throw new Error('Failed to fetch data');
         }

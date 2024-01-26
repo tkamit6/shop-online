@@ -21,8 +21,8 @@ export default async function page({ searchParams }) {
                     <p className='text-xl py-1 font-semibold'>Trending Products</p>
                     <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
                         {
-                            data.map((item) => (
-                                <ProductsData category={"cloths"} item={item} key={item?._id} />
+                            data.map((item, id) => (
+                                <ProductsData category={"cloths"} item={item} key={id} />
                             ))
                         }
                     </div>

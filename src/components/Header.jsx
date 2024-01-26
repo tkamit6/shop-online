@@ -136,8 +136,8 @@ export default function Header() {
                                 </DropdownItem>
 
                                 {
-                                    dropDownMenu.map((item) => (
-                                        <DropdownItem key={item} onClick={() => signOut()} color="danger">
+                                    dropDownMenu.map((item, id) => (
+                                        <DropdownItem key={id} onClick={() => signOut()} color="danger">
                                             {item}
                                         </DropdownItem>
                                     ))

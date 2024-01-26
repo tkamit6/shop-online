@@ -12,8 +12,8 @@ export default async function Products() {
   return <Container >
     <div className="mb-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 -mt-10">
       {
-        products && products?.map((item) => (
-          <ProductsData category={"cloths"} item={item} key={item.id} />
+        products && products?.map((item, id) => (
+          <ProductsData category={"cloths"} item={item} key={id} />
         ))
       }
     </div>
@@ -21,8 +21,8 @@ export default async function Products() {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 -mt-10">
       {
 
-        phoneProductsData && phoneProductsData?.map((item) => (
-          <ProductsData category={"electronics"} item={item} key={item._id} />
+        phoneProductsData && phoneProductsData?.map((item, id) => (
+          <ProductsData category={"electronics"} item={item} key={id} />
         ))
       }
     </div>

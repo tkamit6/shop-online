@@ -24,8 +24,8 @@ export default function page() {
                 </div>
                 <div className='flex flex-col gap-y-2'>
                     {
-                        productData.length > 0 ? productData.map((item) => (
-                            <div key={item?._id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
+                        productData.length > 0 ? productData.map((item, id) => (
+                            <div key={id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
                                 <div className='flex items-center w-[40%] gap-x-2'>
                                     <span onClick={() => dispatch(deleteProduct(item))} className='cursor-pointer'><AiOutlineClose /></span>
                                     <Link href={{ pathname: 'product', query: { _id: item?._id } }} >

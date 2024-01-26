@@ -57,8 +57,8 @@ export default function test() {
       />
      
       {
-        data && data.map((da) => (
-          <p>{da?.companyName}</p>
+        data && data.map((da, id) => (
+          <p key={id}>{da?.companyName}</p>
         ))
       }
 

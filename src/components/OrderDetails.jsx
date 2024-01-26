@@ -27,8 +27,8 @@ export default function OrderDetails() {
 
 
             {
-                orderData && orderData?.order?.map((item) => (
-                    <div key={item?._id} className='grid grid-cols-7 border-b-[1px] border-gray-400 w-full py-4'>
+                orderData && orderData?.order?.map((item, id) => (
+                    <div key={id} className='grid grid-cols-7 border-b-[1px] border-gray-400 w-full py-4'>
                         <div className='col-span-4'>
                             <div className='flex gap-4' >
                                 <Image src={item?.image} alt='img' width={500} height={500} className='w-12 h-12 object-cover' />
