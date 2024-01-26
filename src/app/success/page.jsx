@@ -1,8 +1,11 @@
 import Container from '@/components/Container'
+import ProductsData from '@/components/ProductsData'
+import { phoneProducts } from '@/helpers'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function page() {
+export default async function page() {
+   
     return (
         <Container className={'flex items-center justify-center py-20'}>
             <div className='min-h-[400px] flex  flex-col items-center justify-center gap-y-5'>

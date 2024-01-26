@@ -1,11 +1,18 @@
-// user.js
+//
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String
+const productSchema = new mongoose.Schema({
+    title: String,
+    isNew: Boolean,
+    oldPrice: Number,
+    price: Number,
+    description: String,
+    category: String,
+    image: String,
+    rating: Number,
+    quantity: Number,
+    images: [{ type: String }]
 });
 
-const User = mongoose?.models?.categories || mongoose.model('categories', userSchema);
-
-export default User;
+const ProductDb = mongoose?.models?.Product || mongoose.model('Product', productSchema);
+export default ProductDb;

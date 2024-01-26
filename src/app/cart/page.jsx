@@ -26,18 +26,19 @@ export default function page() {
                     {
                         productData.length > 0 ? productData.map((item) => (
                             <div key={item?._id} className='w-full bg-white p-4 flex flex-col md:flex-row items-center justify-between'>
-                                <div className='flex items-center gap-x-2'>
+                                <div className='flex items-center w-[40%] gap-x-2'>
                                     <span onClick={() => dispatch(deleteProduct(item))} className='cursor-pointer'><AiOutlineClose /></span>
                                     <Link href={{ pathname: 'product', query: { _id: item?._id } }} >
                                         <Image src={item?.image} alt='img' width={500} height={500} className='object-cover w-20 h-20' />
+                                        <h3>{item?.title}</h3>
                                     </Link>
                                 </div>
-                                <div className='flex items-center justify-center gap-x-3 border-[1px]'>
+                                <div className='flex w-[10%] items-center justify-center gap-x-3 border-[1px]'>
                                     <span onClick={() => dispatch(decreaseQuantity(item))} className='cursor-pointer'><FiChevronLeft /></span>
                                     <p>{item?.quantity}</p>
                                     <span onClick={() => dispatch(increaseQuantity(item))} className='cursor-pointer'><FiChevronRight /></span>
                                 </div>
-                                <div>
+                                <div className='w-[40%] flex justify-end'>
                                     {<FormatedAmount amount={item?.price * item?.quantity} />}
                                 </div>
                             </div>

@@ -51,7 +51,6 @@ export default function Header() {
                 router.push(`/product?_id=${item?._id}`)
             }
         })
-        console.log(selectedItem)
     }
 
     useEffect(() => {

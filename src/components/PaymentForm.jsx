@@ -39,7 +39,6 @@ export default function PaymentForm() {
             }),
         });
         const data = await response.json();
-        console.log(data)
         if (response.ok) {
             await dispatch(saveOrder({ order: productData, id: data.id }));
             stripe?.redirectToCheckout({ sessionId: data.id });

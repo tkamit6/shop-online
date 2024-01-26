@@ -22,7 +22,6 @@ export default function test() {
     fetchData();
   }, [query]);
 
-  console.log(data)
 
   const top100Films = [
     { label: 'The Shawshank Redemption', year: 1994 },

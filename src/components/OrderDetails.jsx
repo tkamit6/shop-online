@@ -6,7 +6,6 @@ import FormatedAmount from './FormatedAmount'
 
 export default function OrderDetails() {
     const { orderData } = useSelector((state) => state?.shopping)
-    console.log(orderData)
 
     return (
         <div>

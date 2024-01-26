@@ -13,7 +13,10 @@ const nextConfig = {
             },
             {
                 hostname: 'avatars.githubusercontent.com'
-            }
+            },
+            {
+                hostname: 'cdn.dummyjson.com'
+            },
         ]
     }
 }

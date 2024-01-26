@@ -13,10 +13,7 @@ export default function SingleProducts({ product, idString }) {
     const [productQuantity, setProductQuantity] = useState(0)
     const dispatch = useDispatch();
     const { productData } = useSelector((state) => state?.shopping);
-
-
-    
-    console.log(productData)
+    console.log(product)
     useEffect(() => {
         const singleProduct = productData.filter((item) => {
             return item?._id == idString
@@ -24,7 +21,6 @@ export default function SingleProducts({ product, idString }) {
         setProductQuantity(singleProduct[0]?.quantity)
     }, [productData])
 
-    console.log(productQuantity)
 
     return (
         <div className='grid lg:grid-cols-2 gap-5 bg-white p-4 rounded-lg'>

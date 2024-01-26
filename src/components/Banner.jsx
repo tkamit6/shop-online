@@ -56,7 +56,6 @@ export default function Banner() {
                    <BannrText title={"Best Ever"} /> 
                 </div>
             </Slider>
-            <div className="w-full h-20 bg-gradient-to-t from-gray-50/50 to-transaparent bottom-0 left-0 z-10 absolute"/>
         </div>
     )
 }

@@ -9,9 +9,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { addtoCart } from '@/redux/shoppingSlice';
 
-export default function ProductsData({ item }) {
+export default function ProductsData({ item, category }) {
     const dispatch = useDispatch();
-
     const starArray = Array.from({ length: item?.rating }, (_, index) => (
         <span key={index} className='text-yellow-500'>
             <IoIosStar />
@@ -20,9 +19,8 @@ export default function ProductsData({ item }) {
 
     return (
         <>
-
             <div className='w-full rounded-lg overflow-hidden '>
-                <Link href={{ pathname: '/product', query: { _id: item?._id } }}>
+                <Link href={{ pathname: '/product', query: { _id: item?._id , category: category} }}>
                     <div className='w-full h-80 group relative overflow-hidden'>
                         <Image src={item?.image} alt='img' height={500} width={500} className='w-full h-full object-cover group-hover:scale-110 duration-200 rounded-t-lg' />
                         {
@@ -52,7 +50,7 @@ export default function ProductsData({ item }) {
                         <div className='flex'>{starArray}  </div>
                     </div>
                 </div>
-                <Toaster  />
+                <Toaster />
             </div>
         </>
     )

@@ -7,11 +7,12 @@ export default async function page({ searchParams }) {
 
     console.log(searchParams)
     const _idString = searchParams?._id
+    const category = searchParams?.category
     const _id = Number(_idString)
-    const product = getSingleProduct(_id)
-    // console.log(product)
+    const product = getSingleProduct(_id, category)
     const data = await getTrendingProducts()
-    // console.log(data)
+    // console.log(product)
+    // console.log(category)
 
     return (
         <div>

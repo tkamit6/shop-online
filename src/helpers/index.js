@@ -1,4 +1,6 @@
 import { productData } from "@/app/constant/data"
+import { connectDB } from "@/lib/db"
+import axios from "axios"
 
 export const getProducts = async () => {
     const res = await fetch("https://fakestoreapiserver.reactbd.com/smart")
@@ -43,4 +45,21 @@ export const getSingleProduct = (_id) => {
         return data?._id == _id
     })
     return oneProduct;
+}
+
+export const phoneProducts = async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/api/db');
+        if (!response.status === 200) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = response.data;
+        const dataWithImg = await data?.message.filter((item) => {
+            return item?.image
+        })
+        return dataWithImg;
+    } catch (error) {
+        console.log(error)
+    }
+
 }
