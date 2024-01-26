@@ -1,8 +1,5 @@
 import Container from '@/components/Container'
-import ProductsData from '@/components/ProductsData'
-import { phoneProducts } from '@/helpers'
 import Link from 'next/link'
-import React, { useState } from 'react'
 
 export default async function page() {
    
