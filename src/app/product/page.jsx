@@ -5,11 +5,10 @@ import { getSingleProduct, getTrendingProducts } from '@/helpers'
 
 export default async function page({ searchParams }) {
 
-    console.log(searchParams)
     const _idString = searchParams?._id
     const category = searchParams?.category
-    const _id = Number(_idString)
-    const product = getSingleProduct(_id, category)
+    const _id = _idString
+    const product = await getSingleProduct(_id, category)
     const data = await getTrendingProducts()
     // console.log(product)
     // console.log(category)
@@ -23,7 +22,7 @@ export default async function page({ searchParams }) {
                     <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
                         {
                             data.map((item) => (
-                                <ProductsData item={item} key={item?._id} />
+                                <ProductsData category={"cloths"} item={item} key={item?._id} />
                             ))
                         }
                     </div>
