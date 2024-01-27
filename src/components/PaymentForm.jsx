@@ -49,7 +49,7 @@ export default function PaymentForm() {
     };
 
     return (
-        <div className='max-w-lg bg-white p-4'>
+        <div className='flex-1 bg-white p-4'>
             <h2>Cart Total</h2>
             <div className='border-b-[1px] border-b-slate-300 py-2'>
                 <div className='max-w-lg flex items-center justify-between'>

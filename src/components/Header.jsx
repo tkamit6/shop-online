@@ -9,10 +9,9 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useDispatch, useSelector } from 'react-redux';
 import FormatedAmount from './FormatedAmount';
 import { addUser, deleteUser } from '@/redux/shoppingSlice';
-// import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, User } from "@nextui-org/react";
 import { searchQueryFunc } from '@/helpers';
-import { Autocomplete, Box, Button, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, Divider, SwipeableDrawer, TextField } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -186,8 +185,8 @@ export default function Header() {
                                             src: imageUrl,
                                         }}
                                         className="transition-transform"
-                                        description={`${session?.user?.email}`}
-                                        name={session?.user?.name}
+                                        // description={`${session?.user?.email}`}
+                                        // name={session?.user?.name}
                                     />
 
                                 </DropdownTrigger>
