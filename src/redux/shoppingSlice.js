@@ -3,13 +3,26 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     productData: [],
     userInfo: null,
-    orderData: []
+    orderData: [],
+    address: []
 }
+
+
+
+export const setAddress = (formData) => ({
+    type: 'SET_FORM_DATA',
+    payload: formData
+});
+
 
 export const shoppingSlice = createSlice({
     name: 'shopping',
     initialState,
     reducers: {
+        addAddress: (state, action) => {
+            type: 'SET_FORM_DATA',
+                state.address = action.payload;
+        },
         addtoCart: (state, action) => {
             const existingProduct = state.productData.find((item) => {
                 return item._id === action.payload._id
@@ -58,5 +71,5 @@ export const shoppingSlice = createSlice({
     }
 });
 
-export const { addtoCart, increaseQuantity, decreaseQuantity, resetCart, deleteProduct, addUser, deleteUser, saveOrder, resetOrder } = shoppingSlice.actions;
+export const { addtoCart, increaseQuantity, decreaseQuantity, resetCart, deleteProduct, addUser, addAddress, deleteUser, saveOrder, resetOrder } = shoppingSlice.actions;
 export default shoppingSlice.reducer;

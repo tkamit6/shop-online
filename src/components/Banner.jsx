@@ -13,14 +13,14 @@ const NextArrow = (props) => {
     const { onClick } = props
     return (
         <div className="bg-slate-100 p-3 hover:bg-orange-600 absolute">
-            <PiCaretRightLight />
+            {/* <PiCaretRightLight /> */}
         </div>
     )
 }
 const PreArrow = (props) => {
     const { onCick } = props;
     return (
-        <div>
+        <div>   
             <PiCaretLeftLight />
         </div>
     )

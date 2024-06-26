@@ -32,14 +32,15 @@
 
 .slick-initialized button.slick-arrow {
   position: absolute;
-  /* left: 50%; */
+  right: 50%;
   gap: 2rem;
   transform: translate(-50%, -50%);
 }
 
 .slick-initialized button.slick-arrow.slick-prev {
-  left: 5%;
+  left: 90%;
   z-index: 1;
+  bottom: 0%;
 }
 
 .slick-initialized button.slick-arrow.slick-next {

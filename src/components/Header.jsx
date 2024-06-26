@@ -195,7 +195,7 @@ export default function Header() {
                                         <p className="font-bold">Signed in as</p>
                                         <p className="font-bold">@{session?.user?.email}</p>
                                     </DropdownItem>
-                                    <DropdownItem key="profile">
+                                    <DropdownItem key="profi">
                                         Profile
                                     </DropdownItem>
 
